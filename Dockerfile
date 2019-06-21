@@ -12,22 +12,20 @@
 
 # Modified
 
-FROM amazonlinux:1
+FROM amazonlinux:latest
 
 RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
     && yum install python3 python3-devel python3-pip python3-setuptools python-virtualenv nodejs bzip2 fontconfig openssh-clients git -y \
     && yum clean all \
     && rm -rf /var/cache/yum \
-    && pip-3.7 install awscli --no-cache-dir \
+    && pip3 install awscli --no-cache-dir \
     && cd /opt \
     && npm install -g npm@latest \
-    && npm install phantomjs-prebuilt \
     && cd /usr/local/bin \
     && ln -s /usr/bin/pydoc3 pydoc \
     && ln -s /usr/bin/python3 python \
     && ln -s /usr/bin/python3-config python-config \
-    && ln -s /usr/bin/pip-3.7 pip \
-    && ln -s /opt/node_modules/.bin/phantomjs phantomjs \
+    && ln -s /usr/bin/pip3 pip \
     && set -x && \
     # Install docker-compose
     # https://docs.docker.com/compose/install/
