@@ -12,20 +12,20 @@
 
 # Modified
 
-FROM amazonlinux:latest
+FROM amazonlinux:2018.03
 
 RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
-    && yum install python3 python3-devel python3-pip python3-setuptools python-virtualenv nodejs bzip2 fontconfig openssh-clients libxml2-devel libxslt-devel git -y \
+    && yum install python34 python34-devel python34-pip python34-setuptools python34-virtualenv nodejs bzip2 fontconfig openssh-clients libxml2-devel libxslt-devel git gcc -y \
     && yum clean all \
     && rm -rf /var/cache/yum \
-    && pip3 install awscli --no-cache-dir \
+    && pip-3.4 install awscli --no-cache-dir \
     && cd /opt \
     && npm install -g npm@latest \
     && cd /usr/local/bin \
-    && ln -s /usr/bin/pydoc3 pydoc \
-    && ln -s /usr/bin/python3 python \
-    && ln -s /usr/bin/python3-config python-config \
-    && ln -s /usr/bin/pip3 pip \
+    && ln -s /usr/bin/pydoc34 pydoc \
+    && ln -s /usr/bin/python34 python \
+    && ln -s /usr/bin/python34-config python-config \
+    && ln -s /usr/bin/pip-3.4 pip \
     && set -x && \
     # Install docker-compose
     # https://docs.docker.com/compose/install/
