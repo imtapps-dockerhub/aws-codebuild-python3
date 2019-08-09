@@ -24,6 +24,7 @@ RUN curl --silent --location https://rpm.nodesource.com/setup_8.x | bash - \
     && cd /usr/local/bin \
     && ln -s /usr/bin/pydoc34 pydoc \
     && ln -s /usr/bin/python34 python \
+    && ln -s /usr/bin/virtualenv-3.4 virtualenv \
     && ln -s /usr/bin/python34-config python-config \
     && ln -s /usr/bin/pip-3.4 pip \
     && set -x && \
